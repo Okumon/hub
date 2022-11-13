@@ -6100,41 +6100,7 @@ end)
    end)
    
    Misc:Seperator("Other")
-   
-      Misc:Button("Fake KorBlox",function()
-game.Players.LocalPlayer.Character.RightUpperLeg.MeshId="rbxassetid://902942096"
-wait()
-game.Players.LocalPlayer.Character.RightUpperLeg.TextureID="rbxassetid://902843398"
-wait()
-game.Players.LocalPlayer.Character.RightLowerLeg.Transparency=1
-wait()
-game.Players.LocalPlayer.Character.RightFoot.Transparency=1
-wait()
-   end)
-   
-      Misc:Button("Fire Hand",function()
-local Fire = Instance.new("Fire")
-Fire.Parent = game.Players.LocalPlayer.Character.RightHand
-Fire.Parent = game.Players.LocalPlayer.Character.LeftHand
-Fire.Heat = 10
-Fire.Size = 5
-   end)
-   
-      Misc:Button("Fake KorBlox + Fire Hand",function()
-game.Players.LocalPlayer.Character.RightUpperLeg.MeshId="rbxassetid://902942096"
-wait()
-game.Players.LocalPlayer.Character.RightUpperLeg.TextureID="rbxassetid://902843398"
-wait()
-game.Players.LocalPlayer.Character.RightLowerLeg.Transparency=1
-wait()
-game.Players.LocalPlayer.Character.RightFoot.Transparency=1
-wait()
-local Fire = Instance.new("Fire")
-Fire.Parent = game.Players.LocalPlayer.Character.RightHand
-Fire.Parent = game.Players.LocalPlayer.Character.LeftHand
-Fire.Heat = 10
-Fire.Size = 5
-   end)
+  
 
    
    Misc:Button("Copy Cframe",function()

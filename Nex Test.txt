@@ -6136,31 +6136,7 @@ Fire.Heat = 10
 Fire.Size = 5
    end)
    
-      St:Toggle("Test On&off",getgenv().Test,function(value)
-        getgenv().Test = value
-   end)
-   
-   spawn(function()
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if getgenv().Test then
-             pcall(function()
-			 game.Players.LocalPlayer.Character.RightUpperLeg.MeshId="rbxassetid://902942096"
-			 wait()
-			 game.Players.LocalPlayer.Character.RightUpperLeg.TextureID="rbxassetid://902843398"
-			 wait()
- 			game.Players.LocalPlayer.Character.RightLowerLeg.Transparency=1
- 			wait()
- 			game.Players.LocalPlayer.Character.RightFoot.Transparency=1
- 			wait()
-			 local Fire = Instance.new("Fire")
- 			Fire.Parent = game.Players.LocalPlayer.Character.RightHand
-	 		Fire.Parent = game.Players.LocalPlayer.Character.LeftHand
- 			Fire.Heat = 10
- 			Fire.Size = 5
-            end)
-        end
-    end)
-end)
+
    
    Misc:Button("Copy Cframe",function()
         setclipboard(tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position))

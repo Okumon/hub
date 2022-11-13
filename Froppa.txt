@@ -2125,7 +2125,7 @@ end
 
 
 
-local Library = Update:Window("OKUMON","6023426909",Enum.KeyCode.RightControl);
+local Library = Update:Window("PerZeon","6023426909",Enum.KeyCode.RightControl);
 Main = Library:Tab("Main","6023426909")
 M = Library:Tab("Misc Farm")
 Ss = Library:Tab("Stats")
@@ -2142,7 +2142,7 @@ Misc = Library:Tab("Misc")
 
 Main:Line()
 
-Main:Label("Welcome to OKUMON HUB")
+Main:Label("Welcome to PerZeon HUB")
 
 local Time = Main:Label("Executor Time");spawn(function() getgenv().Time = true;while true do wait(.1) UpdateTime() end end);function UpdateTime() local date = os.date("*t");local hour = (date.hour) % 24;local ampm = hour < 12 and "AM" or "PM";local timezone = string.format("%02i:%02i:%02i %s", ((hour -1) % 12) + 1, date.min, date.sec, ampm);local datetime = string.format("%02d/%02d/%04d", date.day, date.month, date.year);local LocalizationService = game:GetService("LocalizationService");local Players = game:GetService("Players");local player = Players.LocalPlayer;local name = player.Name;local result, code = pcall(function()   return LocalizationService:GetCountryRegionForPlayerAsync(player)  end);Time:Set(" : " .. timezone);Time:Set("Executor Time: " .. datetime .. " [ " .. code .. " ]");spawn(function() if getgenv().Time then pcall(function()  while wait() do  Time()  end end) end end) end
 
@@ -5814,6 +5814,20 @@ end)
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Slingshot","1")
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Slingshot","2")
     end)
+    
+    S:Seperator("Bones")
+    
+    Shop:AddButton("Buy Surprise",function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Buy",1,1)
+    end)
+    
+    Shop:AddButton("Stat Refund",function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Buy",1,2)
+    end)
+        
+    Shop:AddButton("Race Reroll",function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Buy",1,3)
+    end)
 	
     D:Seperator("Sniper")
     
@@ -6086,6 +6100,10 @@ end)
    end)
    
    Misc:Seperator("Other")
+   
+
+   
+
    
    Misc:Button("Copy Cframe",function()
         setclipboard(tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position))
@@ -6732,7 +6750,7 @@ function AttackNoCD()
 end
 local cac
 if SuperFastMode then 
-	cac=task.wait(0.79)
+	cac=task.wait(0.59)
 else
 	cac=wait
 end
@@ -6740,6 +6758,21 @@ while cac() do
 	AttackNoCD()
 end
 
+end)
+
+St:Toggle("Auto Click",getgenv().AutoClick,function(value)
+getgenv().AutoClick = value
+end)
+
+spawn(function()
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if getgenv().AutoClick then
+             pcall(function()
+                game:GetService'VirtualUser':CaptureController()
+			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+            end)
+        end
+    end)
 end)
     
 

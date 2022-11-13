@@ -2146,7 +2146,7 @@ Main:Label("Welcome to OKUMON HUB")
 
 local Time = Main:Label("Executor Time");spawn(function() getgenv().Time = true;while true do wait(.1) UpdateTime() end end);function UpdateTime() local date = os.date("*t");local hour = (date.hour) % 24;local ampm = hour < 12 and "AM" or "PM";local timezone = string.format("%02i:%02i:%02i %s", ((hour -1) % 12) + 1, date.min, date.sec, ampm);local datetime = string.format("%02d/%02d/%04d", date.day, date.month, date.year);local LocalizationService = game:GetService("LocalizationService");local Players = game:GetService("Players");local player = Players.LocalPlayer;local name = player.Name;local result, code = pcall(function()   return LocalizationService:GetCountryRegionForPlayerAsync(player)  end);Time:Set(" : " .. timezone);Time:Set("Executor Time: " .. datetime .. " [ " .. code .. " ]");spawn(function() if getgenv().Time then pcall(function()  while wait() do  Time()  end end) end end) end
 
-
+Time = Main:Label("Server Time")
 
 Main:Seperator("Main Farm")
 
@@ -6668,7 +6668,7 @@ end)
     end)      
     
         St:Toggle("Ultimate Fast Attack",nil,function(value)
-        local SuperFastMode = value 
+local SuperFastMode = value 
     _G.SuperFastMode = value
 
 local plr = game.Players.LocalPlayer
@@ -6732,7 +6732,7 @@ function AttackNoCD()
 end
 local cac
 if SuperFastMode then 
-	cac=task.wait(0.58)
+	cac=task.wait(0.79)
 else
 	cac=wait
 end
@@ -6741,8 +6741,6 @@ while cac() do
 end
 
 end)
-
-    end) 
     
 
 

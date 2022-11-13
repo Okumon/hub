@@ -1536,48 +1536,48 @@ if game.PlaceId == 2753915549 then
                 NameMon = "Cookie Crafter"
                 CFrameQuest = CFrame.new(-2021.32007, 37.7982254, -12028.7295, 0.957576931, -8.80302053e-08, 0.288177818, 6.9301187e-08, 1, 7.51931211e-08, -0.288177818, -5.2032135e-08, 0.957576931)
             elseif MyLevel == 2225 or MyLevel <= 2249 then
-            Mon = "Cake Guard [Lv. 2225]"
-            NQuest = "CakeQuest1"
-            LQuest = 2
-            NameMon = "Cake Guard"
-            CFrameQuest = CFrame.new(-2021.5509033203125, 37.798221588134766, -12028.103515625)
-            CFrameMon = CFrame.new(-1442.373046875, 158.14111328125, -12277.37109375)
-		elseif MyLevel == 2250 or MyLevel <= 2274 then
-            Mon = "Baking Staff [Lv. 2250]"
-            NQuest = "CakeQuest2"
-            LQuest = 1
-            NameMon = "Baking Staff"
-            CFrameQuest = CFrame.new(-1927.9107666015625, 37.79813003540039, -12843.78515625)
-            CFrameMon = CFrame.new(-1837.2803955078125, 129.0594482421875, -12934.5498046875)
-		elseif MyLevel == 2275 or MyLevel <= 2300 then
-            Mon = "Head Baker [Lv. 2275]"
-            NQuest = "CakeQuest2"
-            LQuest = 2
-            NameMon = "Head Baker"
-            CFrameQuest = CFrame.new(-1927.9107666015625, 37.79813003540039, -12843.78515625)
-            CFrameMon = CFrame.new(-2203.302490234375, 109.90937042236328, -12788.7333984375)
-         elseif MyLevel == 2300 or Level <= 2324 then
+                Mon = "Cake Guard [Lv. 2225]"
+                NQuest = "CakeQuest1"
+                LQuest = 2
+                NameMon = "Cake Guard"
+                CFrameQuest = CFrame.new(-2021.5509033203125, 37.798221588134766, -12028.103515625)
+                CFrameMon = CFrame.new(-1442.373046875, 158.14111328125, -12277.37109375)
+		    elseif MyLevel == 2250 or MyLevel <= 2274 then
+                Mon = "Baking Staff [Lv. 2250]"
+                NQuest = "CakeQuest2"
+                LQuest = 1
+                NameMon = "Baking Staff"
+                CFrameQuest = CFrame.new(-1927.9107666015625, 37.79813003540039, -12843.78515625)
+                CFrameMon = CFrame.new(-1837.2803955078125, 129.0594482421875, -12934.5498046875)
+		    elseif MyLevel == 2275 or MyLevel <= 2300 then
+                Mon = "Head Baker [Lv. 2275]"
+                NQuest = "CakeQuest2"
+                LQuest = 2
+                NameMon = "Head Baker"
+                CFrameQuest = CFrame.new(-1927.9107666015625, 37.79813003540039, -12843.78515625)
+                CFrameMon = CFrame.new(-2203.302490234375, 109.90937042236328, -12788.7333984375)
+             elseif MyLevel == 2300 or Level <= 2324 then
                Mon = "Cocoa Warrior [Lv. 2300]"
                LQuest = 1
                NQuest = "ChocQuest1"
                NameMon = "Cocoa Warrior"
                CFrameQuest = CFrame.new(231.742981, 25.3354111, -12199.0537, 0.998278677, -5.16006757e-08, 0.0586484075, 4.79685092e-08, 1, 6.33390442e-08, -0.0586484075, -6.04167383e-08, 0.998278677)
                CFrameMon = CFrame.new(231.742981, 25.3354111, -12199.0537, 0.998278677, -5.16006757e-08, 0.0586484075, 4.79685092e-08, 1, 6.33390442e-08, -0.0586484075, -6.04167383e-08, 0.998278677)
-            elseif MyLevel == 2325 or Level <= 2349 then
+             elseif MyLevel == 2325 or Level <= 2349 then
                Mon = "Chocolate Bar Battler [Lv. 2325]"
                LQuest = 2
                NQuest = "ChocQuest1"
                NameMon = "Chocolate Bar Battler"
-              CFrameQuest = CFrame.new(231.742981, 25.3354111, -12199.0537, 0.998278677, -5.16006757e-08, 0.0586484075, 4.79685092e-08, 1, 6.33390442e-08, -0.0586484075, -6.04167383e-08, 0.998278677)
-              CFrameMon = CFrame.new(231.742981, 25.3354111, -12199.0537, 0.998278677, -5.16006757e-08, 0.0586484075, 4.79685092e-08, 1, 6.33390442e-08, -0.0586484075, -6.04167383e-08, 0.998278677)
-              elseif MyLevel == 2350 or Level <= 2374 then
+               CFrameQuest = CFrame.new(231.742981, 25.3354111, -12199.0537, 0.998278677, -5.16006757e-08, 0.0586484075, 4.79685092e-08, 1, 6.33390442e-08, -0.0586484075, -6.04167383e-08, 0.998278677)
+               CFrameMon = CFrame.new(231.742981, 25.3354111, -12199.0537, 0.998278677, -5.16006757e-08, 0.0586484075, 4.79685092e-08, 1, 6.33390442e-08, -0.0586484075, -6.04167383e-08, 0.998278677)
+            elseif MyLevel == 2350 or Level <= 2374 then
                Mon = "Sweet Thief [Lv. 2350]"
                LQuest = 1
                NQuest = "ChocQuest2"
                NameMon = "Sweet Thief"
               CFrameQuest = CFrame.new(149.867218, 24.8196201, -12775.5283, -0.0371122323, -7.14229245e-08, -0.99931109, -6.93553162e-08, 1, -6.88964548e-08, 0.99931109, 6.6750637e-08, -0.0371122323)
               CFrameMon = CFrame.new(149.867218, 24.8196201, -12775.5283, -0.0371122323, -7.14229245e-08, -0.99931109, -6.93553162e-08, 1, -6.88964548e-08, 0.99931109, 6.6750637e-08, -0.0371122323)
-             elseif MyLevel >= 2375 then
+            elseif MyLevel >= 2375 then
                Mon = "Candy Rebel [Lv. 2375]"
                LQuest = 2
                NQuest = "ChocQuest2"
@@ -6054,23 +6054,11 @@ end)
     
     
     Misc:Button("Rejoin Server",function()
-    game.StarterGui:SetCore("SendNotification", {
-	Icon = "rbxassetid://7996702715";
-	Title = "Rejoin", 
-	Text = "Success"
- })
-wait() 
-game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+ game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
     end)
     
     Misc:Button("Server Hop",function()
-   game.StarterGui:SetCore("SendNotification", {
-	Icon = "rbxassetid://7996702715";
-	Title = "Hop", 
-	Text = "Success"
- })
-wait() 
-Hop()
+        Hop()
     end)
     
     Misc:Button("Hop To Lower Player",function()
@@ -6127,8 +6115,8 @@ Hop()
    Misc:Seperator("Other")
    
    Misc:Button("Copy Cframe",function()
-   setclipboard(tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position))
-end)
+        setclipboard(tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position))
+   end)
    
    Misc:Button("Respawn",function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Pirates") 
@@ -6452,25 +6440,7 @@ end)
         setfpscap(90)
     end)
     
-     Misc:Button("Fake Skin MODE™",function()
-	 spawn(function()
-     pcall(function()
-     while true do
-     wait(.0)
-     game.Players.LocalPlayer.Character.Humanoid.Health = 999999
-            end
-        end)
-    end)
-    
-    for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-        if v.ClassName == "Accessory" then
-            v:Destroy()
-        end
-    end
-    
-    game.Players.LocalPlayer.Character.Pants:Destroy()
-    game.Players.LocalPlayer.Character.Animate.Disabled = true 
-end)
+
     
     Misc:Seperator("Abilities")
     
@@ -6725,7 +6695,7 @@ end)
     end)      
     
         St:Toggle("Ultimate Fast Attack",nil,function(value)
-        local SuperFastMode = value -- à¹€à¸›à¸¥à¸µà¹ˆà¸¢à¸™à¹€à¸›à¹‡à¸™à¸ˆà¸£à¸´à¸‡à¸–à¹‰à¸²à¸„à¸¸à¸“à¸•à¹‰à¸­à¸‡à¸à¸²à¸£à¹‚à¸ˆà¸¡à¸•à¸µ Super Super Super Fast (à¹€à¸Šà¹ˆà¸™à¸à¸²à¸£à¸†à¹ˆà¸²à¸—à¸±à¸™à¸—à¸µ) à¹à¸•à¹ˆà¸ˆà¸°à¸—à¸³à¹ƒà¸«à¹‰à¹€à¸à¸¡à¹€à¸•à¸°à¸„à¸¸à¸“à¸¡à¸²à¸à¸à¸§à¹ˆà¸²à¹‚à¸«à¸¡à¸”à¸›à¸à¸•à¸´
+        local SuperFastMode = value 
     _G.SuperFastMode = value
 
 local plr = game.Players.LocalPlayer
@@ -6800,30 +6770,8 @@ end
 end)
 
     end) 
-local CameraShaker = require(game.ReplicatedStorage.Util.CameraShaker)
-CombatFrameworkR = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
-y = debug.getupvalues(CombatFrameworkR)[2]
-spawn(function()
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if _G.FastAttack then
-            if typeof(y) == "table" then
-                pcall(function()
-                    CameraShaker:Stop()
-                    y.activeController.timeToNextAttack = (math.huge^math.huge^math.huge)
-                    y.activeController.timeToNextAttack = 0
-                    y.activeController.hitboxMagnitude = 60
-                    y.activeController.active = false
-                    y.activeController.timeToNextBlock = 0
-                    y.activeController.focusStart = 1655503339.0980349
-                    y.activeController.increment = 1
-                    y.activeController.blocking = false
-                    y.activeController.attacking = false
-                    y.activeController.humanoid.AutoRotate = true
-                end)
-            end
-        end
-    end)
-end)
+    
+
 
 spawn(function()
     game:GetService("RunService").RenderStepped:Connect(function()

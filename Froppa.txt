@@ -6101,8 +6101,40 @@ end)
    
    Misc:Seperator("Other")
    
-
+      Misc:Button("Fake KorBlox",function()
+game.Players.LocalPlayer.Character.RightUpperLeg.MeshId="rbxassetid://902942096"
+wait()
+game.Players.LocalPlayer.Character.RightUpperLeg.TextureID="rbxassetid://902843398"
+wait()
+game.Players.LocalPlayer.Character.RightLowerLeg.Transparency=1
+wait()
+game.Players.LocalPlayer.Character.RightFoot.Transparency=1
+wait()
+   end)
    
+      Misc:Button("Fire Hand",function()
+local Fire = Instance.new("Fire")
+Fire.Parent = game.Players.LocalPlayer.Character.RightHand
+Fire.Parent = game.Players.LocalPlayer.Character.LeftHand
+Fire.Heat = 10
+Fire.Size = 5
+   end)
+   
+      Misc:Button("Fake KorBlox + Fire Hand",function()
+game.Players.LocalPlayer.Character.RightUpperLeg.MeshId="rbxassetid://902942096"
+wait()
+game.Players.LocalPlayer.Character.RightUpperLeg.TextureID="rbxassetid://902843398"
+wait()
+game.Players.LocalPlayer.Character.RightLowerLeg.Transparency=1
+wait()
+game.Players.LocalPlayer.Character.RightFoot.Transparency=1
+wait()
+local Fire = Instance.new("Fire")
+Fire.Parent = game.Players.LocalPlayer.Character.RightHand
+Fire.Parent = game.Players.LocalPlayer.Character.LeftHand
+Fire.Heat = 10
+Fire.Size = 5
+   end)
 
    
    Misc:Button("Copy Cframe",function()
@@ -6760,20 +6792,7 @@ end
 
 end)
 
-St:Toggle("Auto Click",getgenv().AutoClick,function(value)
-getgenv().AutoClick = value
-end)
 
-spawn(function()
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if getgenv().AutoClick then
-             pcall(function()
-                game:GetService'VirtualUser':CaptureController()
-			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
-            end)
-        end
-    end)
-end)
     
 
 

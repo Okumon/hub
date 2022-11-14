@@ -6460,150 +6460,58 @@ end)
     end)
     
     Misc:Button("Server Hop",function()
-        HopServer()
+        Hop()
     end)
     
-    function HopServer()
-    if not _G.TP_Ser then
-		_G.TP_Ser = true
-		game.StarterGui:SetCore("SendNotification", {
-			Title = "Hop Low Server ", 
-			Text = "กำลังหาเซิฟ",
-			Icon = "http://www.roblox.com/asset/?id=9606070311",
-			Duration = 25
-		})
-		local PlaceID = game.PlaceId
-		local AllIDs = {}
-		local foundAnything = ""
-		local actualHour = os.date("!*t").hour
-		local Deleted = false
-		function TPReturner()
-			local Site;
-			if foundAnything == "" then
-				Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-			else
-				Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
-			end
-			local ID = ""
-			if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
-				foundAnything = Site.nextPageCursor
-			end
-			local num = 0;
-			for i,v in pairs(Site.data) do
-				local Possible = true
-				ID = tostring(v.id)
-				game.StarterGui:SetCore("SendNotification", {
-					Title = "Hop Low Server ", 
-					Text = "Players : " ..tonumber(v.playing),
-					Icon = "http://www.roblox.com/asset/?id=9606070311",
-					Duration = 1.5
-				})
-				if tonumber(v.maxPlayers) > tonumber(v.playing) then
-					for _,Existing in pairs(AllIDs) do
-						if num ~= 0 then
-							if ID == tostring(Existing) then
-								Possible = false
-							end
-						else
-							if tonumber(actualHour) ~= tonumber(Existing) then
-								local delFile = pcall(function()
-									-- delfile("NotSameServers.json")
-									AllIDs = {}
-									table.insert(AllIDs, actualHour)
-								end)
-							end
-						end
-						num = num + 1
-					end
-					if Possible == true then
-						table.insert(AllIDs, ID)
-						wait()
-						pcall(function()
-							_G.Setting_table.Hop_Server = true 
-							Update_Setting(getgenv()['MyName'])
-							_G.TP_Ser = true
-							-- writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-							wait()
-							game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
-						end)
-						wait(.1)
-					end
-				end
-			end
-		end
+
     
     Misc:Button("Hop To Lower Player",function()
-        HopLowServer()
-	end)
+        getgenv().AutoTeleport = true
+        getgenv().DontTeleportTheSameNumber = true 
+        getgenv().CopytoClipboard = false
+        if not game:IsLoaded() then
+            print("Game is loading waiting...")
+        end
+        local maxplayers = math.huge
+        local serversmaxplayer;
+        local goodserver;
+        local gamelink = "https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100" 
+        function serversearch()
+            for _, v in pairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync(gamelink)).data) do
+                if type(v) == "table" and v.playing ~= nil and maxplayers > v.playing then
+                    serversmaxplayer = v.maxPlayers
+                    maxplayers = v.playing
+                    goodserver = v.id
+                end
+            end       
+        end
+        function getservers()
+            serversearch()
+            for i,v in pairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync(gamelink))) do
+                if i == "nextPageCursor" then
+                    if gamelink:find("&cursor=") then
+                        local a = gamelink:find("&cursor=")
+                        local b = gamelink:sub(a)
+                        gamelink = gamelink:gsub(b, "")
+                    end
+                    gamelink = gamelink .. "&cursor=" ..v
+                    getservers()
+                end
+            end
+        end 
+        getservers()
+        if AutoTeleport then
+            if DontTeleportTheSameNumber then 
+                if #game:GetService("Players"):GetPlayers() - 4  == maxplayers then
+                    return warn("It has same number of players (except you)")
+                elseif goodserver == game.JobId then
+                    return warn("Your current server is the most empty server atm") 
+                end
+            end
+            game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, goodserver)
+        end
+    end)
     
-    function HopLowServer()
-	if not _G.TP_Ser then
-		_G.TP_Ser = true
-		game.StarterGui:SetCore("SendNotification", {
-			Title = "Hop Server S", 
-			Text = "กำลังหาเซิฟ",
-			Icon = "http://www.roblox.com/asset/?id=9606070311",
-			Duration = 25
-		})
-		local PlaceID = game.PlaceId
-		local AllIDs = {}
-		local foundAnything = ""
-		local actualHour = os.date("!*t").hour
-		local Deleted = false
-		function TPReturner()
-			local Site;
-			if foundAnything == "" then
-				Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-			else
-				Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
-			end
-			local ID = ""
-			if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
-				foundAnything = Site.nextPageCursor
-			end
-			local num = 0;
-			for i,v in pairs(Site.data) do
-				local Possible = true
-				ID = tostring(v.id)
-				game.StarterGui:SetCore("SendNotification", {
-					Title = "HopServer", 
-					Text = "Players : " ..tonumber(v.playing),
-					Icon = "http://www.roblox.com/asset/?id=9606070311",
-					Duration = 1.5
-				})
-				if tonumber(v.maxPlayers) > tonumber(v.playing) then
-					for _,Existing in pairs(AllIDs) do
-						if num ~= 0 then
-							if ID == tostring(Existing) then
-								Possible = false
-							end
-						else
-							if tonumber(actualHour) ~= tonumber(Existing) then
-								local delFile = pcall(function()
-									-- delfile("NotSameServers.json")
-									AllIDs = {}
-									table.insert(AllIDs, actualHour)
-								end)
-							end
-						end
-						num = num + 1
-					end
-					if Possible == true then
-						table.insert(AllIDs, ID)
-						wait()
-						pcall(function()
-							_G.Setting_table.Hop_Server = true 
-							Update_Setting(getgenv()['MyName'])
-							_G.TP_Ser = true
-							-- writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-							wait()
-							game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
-						end)
-						wait(.1)
-					end
-				end
-			end
-		end
     
     Misc:Button("Exit", function()
        game:shutdown() 
@@ -7158,10 +7066,9 @@ spawn(function()
         end
     end
 end)
-St:Toggle("Auto Ken",true,function(value)
-_G.Auto_Ken
+St:Toggle("Auto Ken Haki",_G.Auto_Ken,function(vu)
+	_G.Auto_Ken = vu
 end)
-
 spawn(function()
 	while wait(2) do
 		pcall(function()
@@ -7347,11 +7254,3 @@ elseif _G.WhiteScreen == false then
     game:GetService("RunService"):Set3dRenderingEnabled(true)
 end
 end)
-
-
-
-
-
-        
-        
-

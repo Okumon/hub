@@ -3301,6 +3301,7 @@ Tab1:Label("Music")
 Tab1:Dropdown("Select Music", {
 "MOOD"
 "Test"
+"kuy"
 }, function(text)
   SelectMusic = text
 end)
@@ -3311,6 +3312,27 @@ spawn(function()
      while wait() do
      if SelectMusic == "MOOD" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.Sound.SoundId = ContentProvider.BaseUrl .. "asset/?id=" .. 6357643961
+     end
+     end
+  end)
+end)
+
+spawn(function()
+  pcall(function()
+     while wait() do
+     if SelectMusic == "Test" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Sound.SoundId = ContentProvider.BaseUrl .. "asset/?id=" .. 6443075967
+     end
+     end
+  end)
+end)
+
+
+spawn(function()
+  pcall(function()
+     while wait() do
+     if SelectMusic == "kuy" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Sound.SoundId = ContentProvider.BaseUrl .. "asset/?id=" .. 6718852180
      end
      end
   end)

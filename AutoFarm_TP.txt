@@ -838,6 +838,7 @@ end
   Sector7:AddButton("Mob Island",function()
   two(CFrame.new(-2850.20068, 7.39224768, 5354.99268))
   end)
+  end
 elseif world2 then
   Sector7:AddButton("First Spot",function()
   two(CFrame.new(82.9490662, 18.0710983, 2834.98779))
@@ -896,6 +897,7 @@ elseif world2 then
   Sector7:AddButton("Minisky Island",function()
   two(CFrame.new(-260.358917, 49325.7031, -35259.3008))     
   end)
+  end
 elseif world3 then
   Sector7:AddButton("Port Town",function()
   two(CFrame.new(-287, 29.4128036, 5388, 1, 0, 0, 0, 1, 0, 0, 0, 1))

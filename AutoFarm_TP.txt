@@ -248,7 +248,7 @@
    getgenv().Config.fastattack = x
   end)
   
-    Sector2:AddToggle("Attack no CD",getgenv().Config.fastattack,function(x)
+    Sector2:AddToggle("Attack no CD",function(x)
    AttackNoCD()
   end)
   
@@ -998,11 +998,18 @@ end
   end)
   
   local Sector14 = Tab3:CreateSector("Setting Misc","Right")
-  Sector14:AddSlider("Stat Point",1,150,function(x)
-  if getgenv().fpslock then
-      setfpscap(getgenv().fpslock)
-  end
-  
+Sector13:AddButton("Lock Fps 5",function()
+setfpscap(5)
+  end)
+  Sector13:AddButton("Lock Fps 10",function()
+setfpscap(10)
+  end)
+  Sector13:AddButton("Lock Fps 15",function()
+setfpscap(15)
+  end)
+  Sector13:AddButton("Lock Fps 150",function()
+setfpscap(150)
+  end)
   
   function checklevel()
       local MYLEVEL = game:GetService("Players").LocalPlayer.Data.Level.Value

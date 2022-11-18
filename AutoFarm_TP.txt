@@ -159,9 +159,9 @@
   
   spawn(function()-----anti wrong game
       if table.find(gamelist,game.PlaceId) then
-          RobloxNotify("(xSoku Hub","Loading..",'',2) 
+          RobloxNotify("(PerZeon","Loading..",'',2) 
       else
-          RobloxNotify("xSoku Hub","not this game",'',2) 
+          RobloxNotify("PerZeon","not this game",'',2) 
           task.wait(2)
           game.Players.localPlayer:Kick('You are Banned Frome This game')
       end
@@ -178,7 +178,7 @@
   
     
     local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/naypramx/Ui__Project/Script/XeNonUi", true))()
-    library:CreateWatermark("xSoku Hub")
+    library:CreateWatermark("PerZeon")
     local CenterHubNo1 = library:CreateWindow(os.date("xSoku Hub - %A %d %B %Y"),Enum.KeyCode.RightControl)
     local Tab = CenterHubNo1:CreateTab("Genaral")
     local Tab1 = CenterHubNo1:CreateTab("Item")
@@ -248,9 +248,7 @@
    getgenv().Config.fastattack = x
   end)
   
-    Sector2:AddToggle("Attack no CD",function(x)
-   AttackNoCD()
-  end)
+
   
   Sector2:AddToggle("Auto Buso",getgenv().Config.buso,function(x)
       getgenv().Config.buso = x
@@ -543,6 +541,11 @@
   Sector6:AddButton("DragonTalon",function()
   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon",true)
   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
+  end)
+  
+    Sector6:AddButton("God Human",function()
+  game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman",true)
+  game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
   end)
   
   function UnEquipWeapon(Weapon)
@@ -1999,6 +2002,8 @@ setfpscap(150)
           end)
         end
   end)
+  
+
   
   local VirtualUser = game:GetService('VirtualUser')
   spawn(function()---------- anti afk

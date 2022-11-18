@@ -248,6 +248,9 @@
    getgenv().Config.fastattack = x
   end)
   
+    Sector2:AddToggle("Attack no CD",getgenv().Config.fastattack,function(x)
+   AttackNoCD()
+  end)
   
   Sector2:AddToggle("Auto Buso",getgenv().Config.buso,function(x)
       getgenv().Config.buso = x
@@ -995,7 +998,7 @@ end
   end)
   
   local Sector14 = Tab3:CreateSector("Setting Misc","Right")
-  
+  Sector14:AddSlider("Stat Point",1,150,function(x)
   if getgenv().fpslock then
       setfpscap(getgenv().fpslock)
   end

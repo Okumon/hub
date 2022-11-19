@@ -150,6 +150,21 @@
           end)
       end
   end
+
+
+-- Anti Kick
+local gt = getrawmetatable(game)
+local old = gt.__namecall
+setreadonly(gt, false)
+gt.__namecall = newcclosure(function(self, ...)
+local method = getnamecallmethod()
+if method == "Kick" or method == "kick" then
+    print(...)
+wait(9e9)
+return
+end
+return old(self,...)
+end)
   
   gamelist = {
       2753915549,
@@ -179,7 +194,7 @@
     
     local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/naypramx/Ui__Project/Script/XeNonUi", true))()
     library:CreateWatermark("PerZeon")
-    local CenterHubNo1 = library:CreateWindow(os.date("xSoku Hub - %A %d %B %Y"),Enum.KeyCode.RightControl)
+    local CenterHubNo1 = library:CreateWindow(os.date("PerZeon - %A %d %B %Y"),Enum.KeyCode.RightControl)
     local Tab = CenterHubNo1:CreateTab("Genaral")
     local Tab1 = CenterHubNo1:CreateTab("Item")
     local Tab2 = CenterHubNo1:CreateTab("Teleport")

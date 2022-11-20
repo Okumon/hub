@@ -1749,6 +1749,8 @@ setfpscap(150)
       game:GetService("VirtualInputManager"):SendKeyEvent(false,use,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
   end
   
+  function ByPass(Position)game.Players.LocalPlayer.Character.Head:Destroy()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position wait(.5)game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")end
+  
   local numpos = 0
   function bypasstp(x)
       spawn(function()
@@ -1799,7 +1801,7 @@ setfpscap(150)
                               if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQ.Position).Magnitude <= 1500 then
                                   two(CFrameQ)
                               else
-                                  bypasstp(CFrameQ)
+                                  ByPass(CFrameQ)
                                   if FarmStat then
                                       _TweenCanCle()
                                       getgenv().Config.autofarmlevel = false
@@ -1883,7 +1885,7 @@ setfpscap(150)
                                       UnEquipWeapon(getgenv().Config.selectweapon)
                                       elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Postion - CFramePuk.Position).magnitude >= 1500 then
                                       checklevel()
-                                      bypasstp(CFramePuk)
+                                      ByPass(CFramePuk)
                                       UnEquipWeapon(getgenv().Config.selectweapon)
                                       if FarmStat then
                                       _TweenCanCle()

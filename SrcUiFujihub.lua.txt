@@ -1337,35 +1337,7 @@ local Set = Tab1:CreatePage("Setting")
 
 
 
-Page1:Label("Main Farm")
 
-Page1:Toggle("Toggle",false,function(value)
-    print(value)
-end)
-
-
-Page1:Button("Button",function()
-end)
-
-local Slider = Page1:Slider("Slider",true,0,100,20,function(v)
-    print(v)
-end)
-
-Page1:Button("Uqdate Slider",function()
-    Slider:Update(20)
-end)
-
-local Dropdown = Page2:Dropdown("DropDown",{"1","2","3"},"1",function(v)
-    print(v)
-end)    
-
--- Page1:Textbox("TextBox",". . .",function(v)
---     Textbox = v
--- end)
-
-Page2:Button("Clear Dropdown",function()
-    Dropdown:Clear()
-end)
 
 
 local Dropdown = M:Dropdown("Select Weapon",{"Melee","Sword"},"Select Weapon",false,function(x)
@@ -1437,7 +1409,7 @@ M:Toggle("Auto Legendary Sword",getgenv().AutoBuyLegendarySword,function(x)
     end)
   
   
-      local M = Tab:CreateSector("Setting Auto Farm","Right")
+
   
   Set:Button("Remove Animation",function()
      local Client = game.Players.LocalPlayer
@@ -1481,7 +1453,7 @@ M:Toggle("Auto Legendary Sword",getgenv().AutoBuyLegendarySword,function(x)
   getgenv().Config.remove_effect = x
   end)
   
-   local it = Tab:CreateSector("Status","Right")
+
   
   M:Toggle("Fully Stat",getgenv().Fullystats,function(x)
       getgenv().Fullystats = x
@@ -1569,13 +1541,13 @@ M:Toggle("Auto Legendary Sword",getgenv().AutoBuyLegendarySword,function(x)
   end)
   
   
-      local it = Tab:CreateSector("Spical Melee","left")
+
   
   M:Toggle("Auto Superhuman", getgenv().automelee.superhuman,function(x)
       getgenv().automelee.superhuman = x
   end)
   
-  local M = Tab:CreateSector(" Character","left")
+
   
   M:Toggle("Auto Random Fruit",RandomFruit,function(x)
         RandomFruit = x
@@ -1720,7 +1692,7 @@ M:Toggle("Auto Legendary Sword",getgenv().AutoBuyLegendarySword,function(x)
   end)
   
   
-   local it = Tab1:CreateSector("Buy Melee","left")
+
   it:Button("Black Leg",function()
   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
   end)
@@ -1776,7 +1748,7 @@ M:Toggle("Auto Legendary Sword",getgenv().AutoBuyLegendarySword,function(x)
     end
 end
 
-  local te = Tab2:CreateSector("Island All Map","left")
+
   
   if world1 then
       Island = {
@@ -2009,7 +1981,7 @@ end
   
   
   
-  local te = Tab2:CreateSector("Fast Teleport","Right")
+
   te:Button("Castle on the sea",function()
       game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5098.92676, 316.341248, -3113.49243, -0.416183412, 4.72534332e-08, 0.909280717, 2.58240263e-10, 1, -5.18497281e-08, -0.909280717, -2.13441833e-08, -0.416183412)
   end)
@@ -2022,7 +1994,7 @@ end
       game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5736.56055, 610.424194, -212.302643, -0.997750342, 4.88476317e-08, 0.0670389384, 5.45859855e-08, 1, 8.3765606e-08, -0.0670389384, 8.72365504e-08, -0.997750342)
   end)
   
-  local te = Tab2:CreateSector("Teleport World","left")
+
   te:Button("Teleport to First World",function()
   local args = {
           [1] = "TravelMain"
@@ -2055,7 +2027,7 @@ end
   end)
   
   
-  local Mi = Tab2:CreateSector("Hop & rejoin","Right")
+
   Mi:Button("rejoin",function()
    local TeleportService = game:GetService("TeleportService")
       TeleportService:Teleport(game.PlaceId)
@@ -2069,7 +2041,7 @@ end
   end)
   
   
-  local it = Tab1:CreateSector("Abilities","Right")
+
   
   it:Button("Skyjump ($10,000 Beli)",function()
   local args = {
@@ -2148,7 +2120,7 @@ end
       end
   end)
   
-  local Mi = Tab3:CreateSector("Join Team","left")
+
   Mi:Button("Pirate",function()
   local args = {
       [1] = "SetTeam",
@@ -2168,7 +2140,7 @@ end
   end)
   
   
-  local Mi = Tab3:CreateSector("Open Gui","left")
+
   Mi:Button("Devil Fruit Shop",function()
    local args = {
           [1] = "GetFruits"
@@ -2218,7 +2190,7 @@ end
         tool.Parent = plr.Backpack
   end)
   
-  local Mi = Tab3:CreateSector("Setting Misc","Right")
+
 Mi:Button("Lock Fps 5",function()
 setfpscap(5)
   end)

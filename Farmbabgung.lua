@@ -3033,7 +3033,7 @@ Combat:Button("Refresh Player",function()
     end
 end)
 
-Combat:Toggle("Spectate","6022668898",false,function(vu)
+Combat:Toggle("Spectate","6022668898",false,function(value)
         SpectatePlys = value
         local plr1 = game:GetService("Players").LocalPlayer.Character.Humanoid
         local plr2 = game:GetService("Players"):FindFirstChild(SelectedKillPlayer)
@@ -3044,11 +3044,11 @@ Combat:Toggle("Spectate","6022668898",false,function(vu)
     end)
 
                 
-Combat:Toggle("Teleport","6022668898",false,function(vu)
+Combat:Toggle("Teleport","6022668898",false,function(value)
         getgenv().TeleportPly = value
         pcall(function()
             if getgenv().TeleportPly then
-                repeat topos(game:GetService("Players")[getgenv().SelectPly].Character.HumanoidRootPart.CFrame) wait() until getgenv().TeleportPly == false
+                repeat topos(game:GetService("Players")[SelectedKillPlayer].Character.HumanoidRootPart.CFrame) wait() until getgenv().TeleportPly == false
             end
             StopTween(getgenv().TeleportPly)
         end)

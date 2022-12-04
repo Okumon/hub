@@ -2011,11 +2011,11 @@ task.spawn(function()
                                 EquipWapon(_G.Setting_table.Weapon)
                                 StartAutoFarmMastery = true
                                 BringBone()
+                                game:GetService'VirtualUser':CaptureController()
+                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Humanoid.WalkSpeed = 0
                                 v.Head.CanCollide = false
-								game:GetService'VirtualUser':CaptureController()
-                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                 topos(v.HumanoidRootPart.CFrame * CFrame.new(0,35,5))
 							end
                             until not AutoFarmMastery or not v.Parent or v.Humanoid.Health <= 0

@@ -1988,8 +1988,8 @@ Tap:Toggle("Auto Farm MasteryGun","6022668898",_G.Setting_table.AutoFarmMasteryG
      Update_Setting(getgenv()['MyName'])
 end)
 
-_G.KillAt = 70
-Tap:Slider("Select HealthMon",1,100,70,function(value)
+_G.KillAt = 35
+Tap:Slider("Select HealthMon",1,100,35,function(value)
     _G.KillAt = value
 end)
 
@@ -2011,6 +2011,8 @@ task.spawn(function()
                                 EquipWapon(_G.Setting_table.Weapon)
                                 StartAutoFarmMastery = true
                                 BringBone()
+                                game:GetService'VirtualUser':CaptureController()
+                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Humanoid.WalkSpeed = 0
                                 v.Head.CanCollide = false

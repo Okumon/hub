@@ -1989,7 +1989,7 @@ Tap:Toggle("Auto Farm MasteryGun","6022668898",_G.Setting_table.AutoFarmMasteryG
 end)
 
 _G.KillAt = 70
-Tap:Slider("Select HealthMon",1,100,35,function(value)
+Tap:Slider("Select HealthMon",1,100,70,function(value)
     _G.KillAt = value
 end)
 
@@ -2011,8 +2011,6 @@ task.spawn(function()
                                 EquipWapon(_G.Setting_table.Weapon)
                                 StartAutoFarmMastery = true
                                 BringBone()
-                                game:GetService'VirtualUser':CaptureController()
-                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Humanoid.WalkSpeed = 0
                                 v.Head.CanCollide = false
@@ -3755,7 +3753,68 @@ local TimeRaid = Dungeon:Label("Wait For Dungeon")
     end
 end
 
-
+    if game.PlaceId == 4442272183 then
+        M:Seperator("Misc law boss")
+    if game.PlaceId == 4442272183 then
+    Dungeon:Toggle("Auto law Dungeon","6022668898",_G.Setting_table.Autolaw,function(value)
+         _G.Autolaw = value
+    end)
+    if game.PlaceId == 4442272183 then
+    Dungeon:Toggle("Auto Law Dungeon Hop","6022668898",_G.Setting_table.Autolawhop,function(value)
+         _G.Autolawhop = value
+    end)
+    
+    spawn(function()
+        while wait() do
+            if  _G.Autolaw then
+                pcall(function()
+                    if game:GetService("Workspace").Enemies:FindFirstChild("Order [Lv. 1250] [Raid Boss]") then
+                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if v.Name == "Order [Lv. 1250] [Raid Boss]" then
+                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat task.wait()
+                                        AutoHaki()
+                                        EquipWeapon(_G.SelectWeapon)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid.WalkSpeed = 0
+                                        v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+                                        topos(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                                        game:GetService("VirtualUser"):CaptureController()
+                                        game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                                        sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
+                                    until not  _G.AutoOderSword or not v.Parent or v.Humanoid.Health <= 0
+                                end
+                            end
+                        end
+                    else
+                        if game:GetService("ReplicatedStorage"):FindFirstChild("Order [Lv. 1250] [Raid Boss]") then
+                            topos(game:GetService("ReplicatedStorage"):FindFirstChild("Order [Lv. 1250] [Raid Boss]").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                        else
+                            if  _G.AutoOderSwordHop then
+                                Hop()
+                            end
+                        end
+                    end
+                end)
+            end
+        end
+    end)
+    
+    if game.PlaceId == 4442272183 then
+    Dungeon:Button("Buy Microchip Oder Boss",function()
+    local args = {
+       [1] = "BlackbeardReward",
+       [2] = "Microchip",
+       [3] = "2"
+    }
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+end)
+    if game.PlaceId == 4442272183 then
+    Dungeon:Button("Start Go To Raid Oder Boss",function()
+        if World2 then
+            fireclickdetector(game:GetService("Workspace").Map.CircleIsland.RaidSummon.Button.Main.ClickDetector)
+        end
+    end)
 ----------------------------Shop----------------------------
 Shop:Seperator("Abilities")
 

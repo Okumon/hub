@@ -1810,6 +1810,23 @@ Tap:Button("Refresh Weapon",function(vu)
 	end
 end)
 
+Tap:Button("Auto Claim Confetti","6022668898",_G.Setting_table.Confetti,function(t)
+while task.wait() do
+pcall(function()
+for i,v in pairs(workspace.NPCs:GetChildren()) do
+    game:GetService("ReplicatedStorage").Remotes.Celebration:InvokeServer('TalkNpc',workspace.NPCs[v.Name])
+    wait(.1) -- change number here to adjust claim rewards delay
+end
+end)
+end 
+end)
+
+
+
+
+
+
+
 Tap:Seperator("FarmMastery")
 
 Tap:Toggle("Auto Farm FruitMastery","6022668898",_G.Setting_table.AutoFarmMastery,function(t)
@@ -3240,7 +3257,13 @@ end)
 Teleport:Button("Teleport To Third Sea",function()
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
 end)
-
+Teleport:Button("Teleport to Seabeast",function()
+        for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+            if v:FindFirstChild("HumanoidRootPart") then
+                topos(v.HumanoidRootPart.CFrame*CFrame.new(0,100,0))
+            end
+        end
+    end)
 
 Teleport:Seperator("Island")
 

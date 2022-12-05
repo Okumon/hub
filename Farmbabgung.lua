@@ -243,7 +243,7 @@ function Com()
     })
 end
 
-_G.Color = Color3.fromRGB(255,0,0)
+_G.Color = Color3.fromRGB(146,132,240)
 repeat wait(1) until game:IsLoaded()
 
 IKAI = true
@@ -1851,7 +1851,7 @@ end)
 UICorner.Parent = ImageButton
 
 
-local win = library:Window("    PlayBack X ",[[     Hub | BF]],[[Ver:4.1]],"10729012702",Enum.KeyCode.RightControl)
+local win = library:Window("    Reskin X ",[[     Hub | BF]],[[Ver:0.1]],"10729012702",Enum.KeyCode.RightControl)
 local Tap = win:Tab("Main Farm",[[7040391851]])
 local Stats = win:Tab("Stats",[[7040410130]])
 local Combat = win:Tab("Combat",[[9606626034]])

@@ -1,0 +1,76 @@
+
+
+
+
+
+
+
+
+
+local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/kickTh/New-Ui/main/discord%20lib%20(1).txt")()
+
+local win = DiscordLib:Window("doors script")
+
+local serv = win:Server("SAZX HUB doors script win", "")
+
+local tgls = serv:Channel("Main hack")
+
+tgls:Toggle("skip rooms ",false, function(SkipRooms)
+G.SkipRoomss = SkipRooms
+while _G.SkipRoomss do wait()
+    pcall(function()
+            local HasKey = false
+            local CurrentDoor = workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Door")
+            for i,v in ipairs(CurrentDoor.Parent:GetDescendants()) do
+                if v.Name == "KeyObtain" then
+                    HasKey = v
+                end
+            end
+            if HasKey then
+                game.Players.LocalPlayer.Character:PivotTo(CF(HasKey.Hitbox.Position))
+                wait(0.3)
+                fireproximityprompt(HasKey.ModulePrompt,0)
+                game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
+                wait(0.3)
+                fireproximityprompt(CurrentDoor.Lock.UnlockPrompt,0)
+            end
+            if LatestRoom == 50 then
+                CurrentDoor = workspace.CurrentRooms[tostring(LatestRoom+1)]:WaitForChild("Door")
+            end
+            game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
+            wait(0.3)
+            CurrentDoor.ClientOpen:FireServer()
+    end)
+ end
+end)
+
+tgls:Toggle("tp key",false, function()
+CF = CFrame.new
+        local CurrentDoor = workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Door")
+        for i,v in ipairs(CurrentDoor.Parent:GetDescendants()) do
+            if v.Name == "KeyObtain" then
+                game.Players.LocalPlayer.Character:PivotTo(CF(v.Hitbox.Position))
+                fireproximityprompt(v.ModulePrompt)
+            end
+        end
+end)
+
+tgls:Toggle("speed 50",false, function(S)
+_G.speed = S
+if _G.speed then
+while true do
+wait(0)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
+end
+end
+end)
+
+tgls:Toggle("speed 100 max",false, function(S)
+_G.speed = S
+if _G.speed then
+while true do
+wait(0)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+end
+end
+end)

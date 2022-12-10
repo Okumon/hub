@@ -2097,10 +2097,10 @@ end
         Distance = (Pos.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
         if Distance < 100 then
             Speed = 100000
-        elseif Distance < 250 then
-            Speed = 350
+        elseif Distance < 350 then
+            Speed = 600
         elseif Distance >= 1000 then
-            Speed = 200
+            Speed = 350
         end
         game:GetService("TweenService"):Create(
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
@@ -2219,7 +2219,7 @@ DevilFruit = win:AddTab("DevilFruits")
 Shop = win:AddTab("Shop")
 Misc = win:AddTab("Misc")
 Set = win:AddTab("Settings")
-Hub = win:AddTab("Hub")
+SecretTab = win:AddTab("Aim")
 
      Main:AddSeperator("Settings")
      Time = Main:AddLabel("Server Time")
@@ -2293,14 +2293,123 @@ Hub = win:AddTab("Hub")
         end)
     end)
     
-    Main:AddToggle("Fast Attack (Attack Auto)",true,function(value)
-        getgenv().FastAttack1 = value
-    end)
+        local plr = game.Players.LocalPlayer
     
-    Main:AddToggle("Fast Attack (Attack then farm)",false,function(value)
+    local CbFw = debug.getupvalues(require(plr.PlayerScripts.CombatFramework))
+    local CbFw2 = CbFw[2]
+    
+    function GetCurrentBlade() 
+        local p13 = CbFw2.activeController
+        local ret = p13.blades[1]
+        if not ret then return end
+        while ret.Parent~=game.Players.LocalPlayer.Character do ret=ret.Parent end
+        return ret
+    end
+    function AttackNoCD() 
+        local AC = CbFw2.activeController
+        for i = 1, 1 do 
+            local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
+                plr.Character,
+                {plr.Character.HumanoidRootPart},
+                60
+            )
+            local cac = {}
+            local hash = {}
+            for k, v in pairs(bladehit) do
+                if v.Parent:FindFirstChild("HumanoidRootPart") and not hash[v.Parent] then
+                    table.insert(cac, v.Parent.HumanoidRootPart)
+                    hash[v.Parent] = true
+                end
+            end
+            bladehit = cac
+            if #bladehit > 0 then
+                local u8 = debug.getupvalue(AC.attack, 5)
+                local u9 = debug.getupvalue(AC.attack, 6)
+                local u7 = debug.getupvalue(AC.attack, 4)
+                local u10 = debug.getupvalue(AC.attack, 7)
+                local u12 = (u8 * 798405 + u7 * 727595) % u9
+                local u13 = u7 * 798405
+                (function()
+                    u12 = (u12 * u9 + u13) % 1099511627776
+                    u8 = math.floor(u12 / u9)
+                    u7 = u12 - u8 * u9
+                end)()
+                u10 = u10 + 1
+                debug.setupvalue(AC.attack, 5, u8)
+                debug.setupvalue(AC.attack, 6, u9)
+                debug.setupvalue(AC.attack, 4, u7)
+                debug.setupvalue(AC.attack, 7, u10)
+                pcall(function()
+                    for k, v in pairs(AC.animator.anims.basic) do
+                        v:Play()
+                    end                  
+                end)
+                if plr.Character:FindFirstChildOfClass("Tool") and AC.blades and AC.blades[1] then 
+                    game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetCurrentBlade()))
+                    game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(u12 / 1099511627776 * 16777215), u10)
+                    game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, i, "") 
+                end
+            end
+        end
+    end
+    
+  require(game.ReplicatedStorage.Util.CameraShaker):Stop()
+  spawn(function()
+    while task.wait() do
+          pcall(function()
+              if UseFast then
+                  if getgenv().FastAttack then
+                    AttackNoCD() 
+                  end
+              end
+          end)
+        end
+  end)
+    
+    
+    
+    Main:AddToggle("Fast Attack",false,function(value)
         getgenv().FastAttack = value
     end)
     
+    Main:AddToggle("Fast Attack [ 2 ]",true,function(v)
+Defaultat = v
+end)
+coroutine.wrap(function()
+    local StopCamera = require(game.ReplicatedStorage.Util.CameraShaker)StopCamera:Stop()
+        for v,v in pairs(getreg()) do
+            if typeof(v) == "function" and getfenv(v).script == game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework then
+                 for v,v in pairs(debug.getupvalues(v)) do
+                    if typeof(v) == "table" then
+                        spawn(function()
+                            game:GetService("RunService").RenderStepped:Connect(function()
+                                if Defaultat then
+                                     pcall(function()
+                                         v.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
+                                         v.activeController.attacking = false
+                                         v.activeController.increment = 4
+                                         v.activeController.blocking = false   
+                                         v.activeController.hitboxMagnitude = 150
+                                         v.activeController.humanoid.AutoRotate = true
+                                           v.activeController.focusStart = 0
+                                           v.activeController.currentAttackTrack = 0
+                                         sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRaxNerous", math.huge)
+                                     end)
+                                 end
+                             end)
+                        end)
+                    end
+                end
+            end
+        end
+    end)();
+    spawn(function()
+    game.RunService.RenderStepped:Connect(function()
+    if Defaultat then
+        Click()
+    end
+    end)
+    end)
     Main:AddToggle("Bring Mob",true,function(value)
         getgenv().BringMonster = value
     end)
@@ -2363,11 +2472,11 @@ Hub = win:AddTab("Hub")
                         StartMagnet = false
                         getgenv().Use = false
                         CheckQuest()
-                        repeat wait() topos(CFrameQuest) until (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 or not getgenv().AutoFarm
-                        if (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then
-                            wait(1.2)
+                        repeat wait() topos(CFrameQuest) until (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 or not getgenv().AutoFarm
+                        if (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+                            wait(0.1)
                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,LevelQuest)
-                            wait(0.5)
+                            wait(0.1)
                         end
                     elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
                         CheckQuest()
@@ -2403,11 +2512,11 @@ Hub = win:AddTab("Hub")
                             StartMagnet = false
                             getgenv().Use = false
                             if game:GetService("ReplicatedStorage"):FindFirstChild(Mon) then
-                                topos(game:GetService("ReplicatedStorage"):FindFirstChild(Mon).HumanoidRootPart.CFrame * CFrame.new(5,10,7))
+                                topos(game:GetService("ReplicatedStorage"):FindFirstChild(Mon).HumanoidRootPart.CFrame * CFrame.new(10,15,17))
                             else
                                 if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 15 then
                                     if PosMon ~= nil then
-                                        topos(PosMon * CFrame.new(5,10,7))
+                                        topos(PosMon * CFrame.new(10,15,17))
                                     else
                                         if OldPos ~= nil then
                                             topos(OldPos.Position)
@@ -6167,7 +6276,7 @@ end)
     end)
     
     Dungeon:AddToggle("Auto Buy Chip",getgenv().AutoBuyChip,function(value)
-        getgenv().AutoBuyChip = value
+        getgenv().AutoChip = value
     end)
     
     spawn(function()
@@ -7171,6 +7280,14 @@ end)
     end)
     
     ------------Settings------------------
+
+
+
+
+
+
+    
+
     
     Set:AddToggle("Ultra Magnet ",false,function(value)
         getgenv().UltraBring = value
@@ -7399,22 +7516,113 @@ end)
    
     
     
-    Hub:AddButton("Mukuro Hub (not update yet)",function()
-        loadstring(game:HttpGet(''))()
+   SecretTab:AddToggle("Aim Bot Skill",false,function(a)
+    AimBotFullFunction = a
+end)
+
+SecretTab:AddToggle("Fov",false,function(a)
+    ShowFov = a
+end)
+
+_G.FOVSize = 200
+
+SecretTab:AddSlider("Fov Size",1,700,_G.FOVSize,function(v)
+    _G.FOVSize = v
+end)
+
+local FOVCircle = Drawing.new("Circle")
+FOVCircle.Thickness = 2
+FOVCircle.NumSides = 460
+FOVCircle.Filled = false
+FOVCircle.Transparency = 0.5
+FOVCircle.Radius = 200
+FOVCircle.Color = Color3.fromRGB(255, 0, 0)
+
+game:GetService("RunService").Stepped:Connect(function()
+    FOVCircle.Radius = _G.FOVSize
+    FOVCircle.Thickness = 1
+    FOVCircle.NumSides = 360
+    FOVCircle.Position = game:GetService('UserInputService'):GetMouseLocation()
+    if ShowFov then
+        FOVCircle.Visible = true
+    else
+        FOVCircle.Visible = false
+    end
+end)
+
+local lp = game:GetService('Players').LocalPlayer
+local mouse = lp:GetMouse()
+spawn(function()
+    while wait() do
+        if AimBotFullFunction then
+            pcall(function()
+                local MaxDist, Closest = math.huge
+                for i,v in pairs(game:GetService("Players"):GetChildren()) do 
+                    local Head = v.Character:FindFirstChild("HumanoidRootPart")
+                    local Pos, Vis = game.Workspace.CurrentCamera.WorldToScreenPoint(game.Workspace.CurrentCamera, Head.Position)
+                    local MousePos, TheirPos = Vector2.new(mouse.X, mouse.Y), Vector2.new(Pos.X, Pos.Y)
+                    local Dist = (TheirPos - MousePos).Magnitude
+                    if Dist < MaxDist and Dist <= _G.FOVSize and v.Name ~= game.Players.LocalPlayer.Name then
+                        MaxDist = Dist
+                        _G.CharacterAimBot = v
+                    end
+                end
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    local gg = getrawmetatable(game)
+    local old = gg.__namecall
+    setreadonly(gg,false)
+    gg.__namecall = newcclosure(function(...)
+        local method = getnamecallmethod()
+        local args = {...}
+        if tostring(method) == "FireServer" then
+            if tostring(args[1]) == "RemoteEvent" then
+                if tostring(args[2]) ~= "true" and tostring(args[2]) ~= "false" then
+                    if AimBotFullFunction then
+                        args[2] = _G.CharacterAimBot.Character.HumanoidRootPart.Position
+                        return old(unpack(args))
+                    end
+                end
+            end
+        end
+        return old(...)
     end)
-    
-    Hub:AddSeperator("Ui LunarHub test paid")
-    
-    Hub:AddButton("LunarHub UI Test",function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/Cve-Hub/ui/main/README.md'))()
+end)
+spawn(function()
+    while wait() do
+        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
+            if v:IsA("Tool") then
+                if v:FindFirstChild("RemoteFunctionShoot") then 
+                    SelectToolWeaponGun = v.Name
+                end
+            end
+        end
+        for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
+            if v:IsA("Tool") then
+                if v:FindFirstChild("RemoteFunctionShoot") then 
+                    SelectToolWeaponGun = v.Name
+                end
+            end
+        end
+    end
+end)
+
+spawn(function()
+    mouse.Button1Down:Connect(function()
+        if SelectToolWeaponGun ~= nil then
+            if AimBotFullFunction and game.Players.LocalPlayer.Character:FindFirstChild(SelectToolWeaponGun) and game:GetService("Players"):FindFirstChild(_G.CharacterAimBot.Name) then
+                tool = game:GetService("Players").LocalPlayer.Character[SelectToolWeaponGun]
+                v17 = workspace:FindPartOnRayWithIgnoreList(Ray.new(tool.Handle.CFrame.p, (game:GetService("Players"):FindFirstChild(_G.CharacterAimBot.Name).Character.HumanoidRootPart.Position - tool.Handle.CFrame.p).unit * 100), { game.Players.LocalPlayer.Character, workspace._WorldOrigin });
+                game:GetService("Players").LocalPlayer.Character[SelectToolWeaponGun].RemoteFunctionShoot:InvokeServer(game:GetService("Players"):FindFirstChild(_G.CharacterAimBot.Name).Character.HumanoidRootPart.Position, (require(game.ReplicatedStorage.Util).Other.hrpFromPart(v17)));
+            end 
+        end
     end)
-    
-    Hub:AddSeperator("Smz Hub (join discord him)")
-    
-    Hub:AddButton("Smz Hub",function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Frerfgzz/free-script/main/SMZHUBv2BETA"))()
-    end)
-    
+end)
+
     ----------------------------------[End]----------------------------------
     local DamageModule = require(game:GetService("ReplicatedStorage").Effect.Container.Misc.Damage)
 local old = DamageModule.Run

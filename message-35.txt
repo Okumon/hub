@@ -1520,16 +1520,11 @@ _G.Fast_Attack = true
     end)
 end)
 
-Main:Toggle("master attack",false,function(value)
-_G.Fasttest = true
+Main:Toggle("test fast attack",false,function(value)
+local fasttest = value 
+    _G.fasttest = value
 
-
-
-    spawn(function()
-        while task.wait(0.1) do
-            if _G.Fasttest then
-                pcall(function()
-                local plr = game.Players.LocalPlayer
+local plr = game.Players.LocalPlayer
 
 local CbFw = debug.getupvalues(require(plr.PlayerScripts.CombatFramework))
 local CbFw2 = CbFw[2]
@@ -1589,7 +1584,7 @@ function AttackNoCD()
     end
 end
 local cac
-if _G.Fasttest then 
+if _G.fasttest then 
 	cac=task.wait(3)
 else
 	cac=wait

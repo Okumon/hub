@@ -1585,7 +1585,7 @@ function AttackNoCD()
 end
 local cac
 if _G.fasttest then 
-	cac=task.wait(3)
+	cac=task.wait(2)
 else
 	cac=wait
 end

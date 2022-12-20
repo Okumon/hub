@@ -45,7 +45,7 @@ if game.PlaceId == 2753915549 then
                                         v.Head.CanCollide = false 
                                         StartMagnetKill = true
                                         PosMonKill = v.HumanoidRootPart.CFrame
-                                        topos(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                                        TP1(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
                                         game:GetService("VirtualUser"):CaptureController()
                                         game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
                                     until not _G.Auto_Farm_Kill or not v.Parent or v.Humanoid.Health <= 0
@@ -56,7 +56,7 @@ if game.PlaceId == 2753915549 then
                         StartMagnetKill = false
                         for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do 
                             if v.Name == "Shanda [Lv. 475]" then
-                                topos(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                                TP1(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
                             end
                         end
                     end
@@ -78,7 +78,7 @@ if game.PlaceId == 2753915549 then
                                         v.Head.CanCollide = false 
                                         StartMagnetKOOK = true
                                         PosMonKOOK = v.HumanoidRootPart.CFrame
-                                        topos(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                                        TP1(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
                                         game:GetService("VirtualUser"):CaptureController()
                                         game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
                                     until not _G.Auto_Farm_Kill or not v.Parent or v.Humanoid.Health <= 0
@@ -89,7 +89,7 @@ if game.PlaceId == 2753915549 then
                         StartMagnetKOOK = false
                         for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do 
                             if v.Name == "Royal Squad [Lv. 525]" then
-                                topos(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                                TP1(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
                             end
                         end
                     end
@@ -1110,7 +1110,7 @@ end
         if not target then
             _G.StopTween = true
             wait()
-            topos(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+            TP1(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
             wait()
             if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
                 game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
@@ -1139,72 +1139,8 @@ end
         wait(1)
         game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
     end) 
-    spawn(function()
-	        while wait() do
-	            if _G.AutoFarm then
-	                pcall(function()
-	                    local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
-	                    if not string.find(QuestTitle, NameMon) then
-	                        StartMagnet = false
-	                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-	                    end
-	                    if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-	                        StartMagnet = false
-	                        CheckQuest()
-	                        repeat wait() TP1(CFrameQuest) until (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 or not _G.AutoFarm
-	                        if (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then
-	                            wait(0.1)
-	                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NQuest,LQuest)
-	                            wait(0.5)
-	                        end
-	                    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-	                        CheckQuest()
-	                        if game:GetService("Workspace").Enemies:FindFirstChild(Mon) then
-	                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-	                                if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-	                                    if v.Name == Mon then
-	                                        if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
-	                                            repeat task.wait()
-	                                                EquipWeapon(_G.SelectWeapon)
-	                                                AutoHaki()                                            
-	                                                PosMon = v.HumanoidRootPart.CFrame
-	                                                TP1(v.HumanoidRootPart.CFrame * CFrame.new(2,15,3))
-	                                                v.HumanoidRootPart.CanCollide = false
-	                                                v.Humanoid.WalkSpeed = 0
-	                                                v.Head.CanCollide = false
-	                                                v.HumanoidRootPart.Size = Vector3.new(70,70,70)
-	                                                StartMagnet = true
-	                                                game:GetService'VirtualUser':CaptureController()
-	                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-	                                            until not _G.AutoFarm or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-	                                        else
-	                                            StartMagnet = false
-	                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-	                                        end
-	                                    end
-	                                end
-	                            end
-	                        else
-	                            StartMagnet = false
-	                            if game:GetService("ReplicatedStorage"):FindFirstChild(Mon) then
-	                                TP1(game:GetService("ReplicatedStorage"):FindFirstChild(Mon).HumanoidRootPart.CFrame * CFrame.new(15,10,2))
-	                            else
-	                                if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
-	                                    if PosMon ~= nil then
-	                                        TP1(PosMon * CFrame.new(15,10,2))
-	                                    else
-	                                        if OldPos ~= nil then
-	                                            TP1(OldPos.Position)
-	                                        end
-	                                    end
-	                                end
-	                            end
-	                        end
-	                    end
-	                end)
-	            end
-	        end
-	    end)
+    
+
     spawn(function()
         while task.wait() do
             pcall(function()
@@ -1245,6 +1181,7 @@ local win = DiscordLib:Window("blox fruit script")
 local serv = win:Server("Sazx hub blox fruit script ", "")
 
 local Main = serv:Channel("Main hack")
+
 
 Main:Toggle("AutoFarm Level",_G.AutoFarm,function(value)
 	        _G.AutoFarm = value
@@ -1558,7 +1495,7 @@ _G.Fast_Attack = true
 
                                 if _G.Fast_Attack then
 
-                                    repeat wait(0.3)
+                                    repeat wait(3)
 
                                         AttackNoCD()
 
@@ -1597,7 +1534,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
--- Script generated by SimpleSpy - credits to exx#9394
+
 while _G.Stats2 do wait()
 local args = {
     [1] = "AddPoint",
@@ -1658,3 +1595,241 @@ spawn(function()
        end
     end)
     
+Main:Toggle("Rejoint Team",true,function(value)
+_G.Team = value
+end)
+spawn(function()
+    while task.wait() do
+        if game.Players.LocalPlayer.Team == nil then
+            pcall(function()
+                if _G.Team then
+                    game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Size = UDim2.new(10000,1000,10000,1000)
+                    game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Position = UDim2.new(-4,0,-5,0)
+                    wait(.5)
+                    game:GetService("VirtualInputManager"):SendMouseButtonEvent(730,394,0,true,game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton,0)
+                    game:GetService("VirtualInputManager"):SendMouseButtonEvent(730,394,0,false,game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton,0)
+                end
+            end)
+        end
+    end
+end)
+
+Main:Toggle('Auto Rejoin',true,function(value)
+        getgenv().ABC = value
+    end)
+    
+    spawn(function()
+	    while wait() do
+	        if ABC then
+	                getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+                        if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+                            game:GetService("TeleportService"):Teleport(game.PlaceId)
+                        end
+                    end)
+	            end
+	        end
+      end)
+      
+Main:Button("Rejoin",function()
+game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+end)
+Main:Button("Hop",function()
+HOP()
+end)
+Main:Button("Hop To Lower Player",function()
+HopServer()
+end)
+    
+    
+function HOP()
+      HopServer()
+      HopServer()
+      HopServer()
+      HopServer()
+      HopServer()
+      while wait(0.2) do
+          pcall(function()
+              HopServer()
+              if foundAnything ~= "" then
+                  HopServer()
+              end
+          end)
+      end
+  end
+
+  function HopServer()-----hopserver
+      local PlaceID = game.PlaceId
+      local AllIDs = {}
+      local foundAnything = ""
+      local actualHour = os.date("!*t").hour
+      local Deleted = false
+      function TPReturner()
+          local Site;
+          if foundAnything == "" then
+              Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+          else
+              Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+          end
+          local ID = ""
+          if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+              foundAnything = Site.nextPageCursor
+          end
+          local num = 0;
+          for i,v in pairs(Site.data) do
+              local Possible = true
+              ID = tostring(v.id)
+          if tonumber(v.maxPlayers) > tonumber(v.playing) then
+              for _,Existing in pairs(AllIDs) do
+                  if num ~= 0 then
+                      if ID == tostring(Existing) then
+                          Possible = false
+                      end
+                  else
+                      if tonumber(actualHour) ~= tonumber(Existing) then
+                          local delFile = pcall(function()
+                          -- delfile("NotSameServers.json")
+                          AllIDs = {}
+                          table.insert(AllIDs, actualHour)
+                          end)
+                      end
+                  end
+                      num = num + 1
+              end
+                  if Possible == true then
+                  table.insert(AllIDs, ID)
+                  task.wait()
+                  pcall(function()
+                  -- writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                  wait()
+                  game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                  end)
+                  wait(.1)
+              end
+          end
+      end
+  end
+                                      
+  function Teleport() 
+          while wait(1) do
+              pcall(function()
+                  TPReturner()
+                  if foundAnything ~= "" then
+                      TPReturner()
+                  end
+              end)
+          end
+      end
+      Teleport()
+  end
+
+    spawn(function()
+	        while wait() do
+	            if _G.AutoFarm then
+	                pcall(function()
+	                    local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
+	                    if not string.find(QuestTitle, NameMon) then
+	                        StartMagnet = false
+	                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+	                    end
+	                    if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
+	                        StartMagnet = false
+	                        CheckQuest()
+	                        repeat wait() TP1(CFrameQuest) until (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 or not _G.AutoFarm
+	                        if (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then
+	                            wait(0.1)
+	                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NQuest,LQuest)
+	                            wait(0.5)
+	                        end
+	                    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+	                        CheckQuest()
+	                        if game:GetService("Workspace").Enemies:FindFirstChild(Mon) then
+	                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+	                                if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+	                                    if v.Name == Mon then
+	                                        if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
+	                                            repeat task.wait()
+	                                                EquipWeapon(_G.SelectWeapon)
+	                                                AutoHaki()                                            
+	                                                PosMon = v.HumanoidRootPart.CFrame
+	                                                TP1(v.HumanoidRootPart.CFrame * CFrame.new(2,15,3))
+	                                                v.HumanoidRootPart.CanCollide = false
+	                                                v.Humanoid.WalkSpeed = 0
+	                                                v.Head.CanCollide = false
+	                                                v.HumanoidRootPart.Size = Vector3.new(70,70,70)
+	                                                StartMagnet = true
+	                                                game:GetService'VirtualUser':CaptureController()
+	                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+	                                            until not _G.AutoFarm or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+	                                        else
+	                                            StartMagnet = false
+	                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+	                                        end
+	                                    end
+	                                end
+	                            end
+	                        else
+	                            StartMagnet = false
+	                            if game:GetService("ReplicatedStorage"):FindFirstChild(Mon) then
+	                                TP1(game:GetService("ReplicatedStorage"):FindFirstChild(Mon).HumanoidRootPart.CFrame * CFrame.new(15,10,2))
+	                            else
+	                                if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
+	                                    if PosMon ~= nil then
+	                                        TP1(PosMon * CFrame.new(0,30,5))
+	                                    else
+	                                        if OldPos ~= nil then
+	                                            TP1(OldPos.Position)
+	                                        end
+	                                    end
+	                                end
+	                            end
+	                        end
+	                    end
+	                end)
+	            end
+	        end
+	    end)
+
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            if _G.AutoFarm then
+                CheckQuest()
+                if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,NameMon) then
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+                    StartMagnet = false
+                end
+                if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+				CheckQuest()
+                    for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                        if v.Name == Mon then
+                            if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                                repeat task.wait()
+                                	EquipWeapon(_G.SelectWeapon)
+                                    TP1(v.HumanoidRootPart.CFrame * CFrame.new(0,30,5))
+                                    if _G.AutoFarm and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 250 then
+                                    StartMagnet = true
+									end
+                                    game:GetService'VirtualUser':CaptureController()
+                                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                until not AutoFarm or not v.Humanoid.Health <= 0
+                            	end
+                           end
+                    end
+                else
+                	StartMagnet = false
+                    TP1(CFrameMon)
+                    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameMon.Position).Magnitude <= 20000 then
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,LevelQuest)
+                        TP1(CFrameMon)
+                     end
+				end
+				CheckQuest()
+			    for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do 
+					 if v.Name == Mon then
+                         	TP1(v.HumanoidRootPart.CFrame * CFrame.new(0,30,5))
+                          end
+                     end
+			    end
+          end)
+      end
+ end)

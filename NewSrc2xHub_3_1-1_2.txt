@@ -3879,47 +3879,48 @@ end)
         StopTween(_G.Auto_Bone)
     end)
     
-    spawn(function()
-        while wait() do 
-            if _G.Auto_Bone and W3 then
-                pcall(function()
-                    if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton [Lv. 1975]") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie [Lv. 2000]") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul [Lv. 2025]") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy [Lv. 2050]") then
-                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                            if v.Name == "Reborn Skeleton [Lv. 1975]" or v.Name == "Living Zombie [Lv. 2000]" or v.Name == "Demonic Soul [Lv. 2025]" or v.Name == "Posessed Mummy [Lv. 2050]" then
-                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                    repeat task.wait()
-                                        AutoHaki()
-                                        EquipWeapon(_G.SelectWeapon)
-                                        v.HumanoidRootPart.CanCollide = false
-                                        v.Humanoid.WalkSpeed = 0
-                                        v.Head.CanCollide = false 
-                                        StartMagnetBoneMon = true
-                                        PosMonBone = v.HumanoidRootPart.CFrame
-                                        topos(v.HumanoidRootPart.CFrame * CFrame.new(0,0,30))
-                                        game:GetService("VirtualUser"):CaptureController()
-                                        game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
-                                    until not _G.Auto_Farm_Bone or not v.Parent or v.Humanoid.Health <= 0
-                                end
-                            end
-                        end
-                    else
-                        StartMagnetBoneMon = false
-                        for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do 
-                            if v.Name == "Reborn Skeleton [Lv. 1975]" then
-                                topos(v.HumanoidRootPart.CFrame * CFrame.new(0,0,30))
-                            elseif v.Name == "Living Zombie [Lv. 2000]" then
-                                topos(v.HumanoidRootPart.CFrame * CFrame.new(0,0,30))
-                            elseif v.Name == "Demonic Soul [Lv. 2025]" then
-                                topos(v.HumanoidRootPart.CFrame * CFrame.new(0,0,30))
-                            elseif v.Name == "Posessed Mummy [Lv. 2050]" then
-                                topos(v.HumanoidRootPart.CFrame * CFrame.new(0,0,30))
-                            end
+    
+    
+spawn(function()
+    while task.wait() do
+        if _G.Auto_Bone then
+            pcall(function()
+                topos(CFrame.new(-9508.5673828125, 142.1398468017578, 5737.3603515625))
+                for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if v.Name == "Reborn Skeleton [Lv. 1975]" or v.Name == "Living Zombie [Lv. 2000]" or v.Name =="Demonic Soul [Lv. 2025]" or v.Name == "Posessed Mummy [Lv. 2050]" then
+                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                            repeat task.wait()
+                                EquipWeapon(_G.SelectWeapon)
+                                StartMagnetBoneMon = true
+                                v.HumanoidRootPart.CanCollide = false
+                                v.Humanoid.WalkSpeed = 0
+                                v.Head.CanCollide = false
+								game:GetService'VirtualUser':CaptureController()
+                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                topos(v.HumanoidRootPart.CFrame * CFrame.new(0,35,5))
+                                BoneMob = v.Name
+                            until not _G.Auto_Bone or not v.Parent or v.Humanoid.Health <= 0
                         end
                     end
-                end)
-            end
+                end
+				StartMagnetBoneMon = false
+                for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do 
+                    if v.Name == "Reborn Skeleton [Lv. 1975]" then
+                        topos(v.HumanoidRootPart.CFrame * CFrame.new(0,35,5))
+                    elseif v.Name == "Living Zombie [Lv. 2000]" then
+                        topos(v.HumanoidRootPart.CFrame * CFrame.new(0,35,5))
+                    elseif v.Name == "Demonic Soul [Lv. 2025]" then
+                        topos(v.HumanoidRootPart.CFrame * CFrame.new(0,35,5))
+                    elseif v.Name == "Posessed Mummy [Lv. 2050]" then
+                        topos(v.HumanoidRootPart.CFrame * CFrame.new(0,35,5))
+                     else
+					    topos(CFrame.new(-9508.5673828125, 142.1398468017578, 5737.3603515625))
+                    end
+                end
+            end)
         end
-    end)
+    end
+end)
     
     Main:Toggle("Auto Random Surprise",_G.Auto_Random_Bone,function(value)
         _G.Auto_Random_Bone = value

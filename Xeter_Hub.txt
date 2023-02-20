@@ -3002,18 +3002,7 @@ spawn(function()
 end)
    end)
    
-    Main:Toggle("Delete Attack FIx",nil,function(d)
-    _G.DeleteAttackFx = d
-    if _G.DeleteAttackFx == true then
-    while _G.DeleteAttackFx do wait()
-        for i, v in pairs(game.Workspace["_WorldOrigin"]:GetChildren()) do
-            if v.Name == "CurvedRing" or v.Name == "DamageCounter" or v.Name == "SwordSlash" or v.Name == "Damage" or v.Name == "Mon" or v.Name == "Sounds" then
-                v:Destroy() 
-            end
-        end
-    end
-    end
-end)
+
     
 
 
@@ -3030,8 +3019,6 @@ end)
 			if LockLevel then
 				if game.Players.localPlayer.Data.Level.Value >= LockLevelValue then
 					game.Players.localPlayer:Kick("Level Lock OFF")
-					wait(5)
-					game:shutdown()
 				end
 			end
 		end
@@ -6921,39 +6908,7 @@ end)
         end)
     end)
     
-    Misc:Toggle("Rejoint Team",true,function(value)
-_G.Team = value
-end)
-spawn(function()
-    while task.wait() do
-        if game.Players.LocalPlayer.Team == nil then
-            pcall(function()
-                if _G.Team then
-                    game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Size = UDim2.new(10000,1000,10000,1000)
-                    game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Position = UDim2.new(-4,0,-5,0)
-                    wait(.5)
-                    game:GetService("VirtualInputManager"):SendMouseButtonEvent(730,394,0,true,game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton,0)
-                    game:GetService("VirtualInputManager"):SendMouseButtonEvent(730,394,0,false,game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton,0)
-                end
-            end)
-        end
-    end
-end)
-Misc:Toggle('Auto Rejoin",true,function(value)
-        getgenv().ABC = value
-    end)
-    
-    spawn(function()
-	    while wait() do
-	        if ABC then
-	                getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-                        if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-                            game:GetService("TeleportService"):Teleport(game.PlaceId)
-                        end
-                    end)
-	            end
-	        end
-      end)
+
     
     Misc:Toggle("NoClip",_G.NOCLIP,function(value)
         _G.NOCLIP = value

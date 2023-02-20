@@ -2298,7 +2298,7 @@ Main:Toggle("AutoFarm Level",_G.AutoFarm,function(value)
                     if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
                         StartMagnet = false
                         CheckQuest()
-                        repeat wait() TP1(CFrameQuest) until (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 or not _G.AutoFarm
+                        repeat wait() topos(CFrameQuest) until (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 or not _G.AutoFarm
                         if (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then
                             wait(0.1)
                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,LevelQuest)
@@ -2315,7 +2315,7 @@ Main:Toggle("AutoFarm Level",_G.AutoFarm,function(value)
                                                 EquipWeapon(_G.SelectWeapon)
                                                 AutoHaki()                                            
                                                 PosMon = v.HumanoidRootPart.CFrame
-                                                TP1(v.HumanoidRootPart.CFrame * CFrame.new(2,15,3))
+                                                topos(v.HumanoidRootPart.CFrame * CFrame.new(2,15,3))
                                                 v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid.WalkSpeed = 0
                                                 v.Head.CanCollide = false
@@ -2334,14 +2334,14 @@ Main:Toggle("AutoFarm Level",_G.AutoFarm,function(value)
                         else
                             StartMagnet = false
                             if game:GetService("ReplicatedStorage"):FindFirstChild(Mon) then
-                                TP1(game:GetService("ReplicatedStorage"):FindFirstChild(Mon).HumanoidRootPart.CFrame * CFrame.new(15,10,2))
+                                topos(game:GetService("ReplicatedStorage"):FindFirstChild(Mon).HumanoidRootPart.CFrame * CFrame.new(15,10,2))
                             else
                                 if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
                                     if PosMon ~= nil then
-                                        TP1(PosMon * CFrame.new(2,10,15))
+                                        topos(PosMon * CFrame.new(2,10,15))
                                     else
                                         if OldPos ~= nil then
-                                            TP1(OldPos.Position)
+                                            topos(OldPos.Position)
                                         end
                                     end
                                 end
@@ -2353,7 +2353,7 @@ Main:Toggle("AutoFarm Level",_G.AutoFarm,function(value)
         end
     end)
     
-Main:Toggle("Black Screen",_G.BScreen,function(value)
+Main:Toggle("Black Screen",_G.BScreen,function(vu)
     _G.BScreen = vu
     if _G.BScreen then
         game:GetService("Players").LocalPlayer.PlayerGui.Main.Blackscreen.Size = UDim2.new(500, 0, 500, 500)
@@ -5011,6 +5011,8 @@ end)
             end)
         end
     end)
+    
+    Main:Line()
 
 Ss:Toggle("Melee",false,function(Value)
 melee = Value    
@@ -5117,6 +5119,8 @@ spawn(function()
             end)
         end
     end)
+    
+    Ss:Line()
     
     Playerslist = {}
     
@@ -5565,7 +5569,7 @@ spawn(function()
             end
         end
     end)
-    
+    P:Line()
 T:Seperator("World")
     
     T:Button("Teleport To Old World",function()
@@ -5755,6 +5759,8 @@ T:Seperator("World")
         end
         StopTween(_G.TeleportIsland)
     end)
+    
+    T:Line()
     
     local TimeRaid = R:Label("Wait For Dungeon")
     
@@ -5986,6 +5992,8 @@ end)
         end)
     end
 
+R:Line()
+
     S:Seperator("Abilities")
     
     S:Button("Buy Geppo",function()
@@ -6129,6 +6137,7 @@ end)
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Slingshot","2")
     end)
     
+    S:Line()
     D:Seperator("Sniper")
     
     FruitList = {
@@ -6334,6 +6343,8 @@ end)
             end
         end
     end)
+    
+    D:Line()
 
 
     Misc:Seperator("Server")
@@ -6915,7 +6926,7 @@ end)
     end)
 
 	
-	    Misc:Toggle("invisible mob",true,function(value)
+	    Misc:Toggle("invisible mob",false,function(value)
 	    _G.inv = value
     while _G.inv do wait()
         pcall(function()
@@ -6942,6 +6953,8 @@ end
 end)
 end
 end)
+
+Misc:Line()
 --FN
 spawn(function()
     while wait() do

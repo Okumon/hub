@@ -1576,27 +1576,27 @@ if game.PlaceId == 2753915549 then
                NQuest = "ChocQuest2"
                NameMon = "Sweet Thief"
               CFrameQuest = CFrame.new(149.867218, 24.8196201, -12775.5283, -0.0371122323, -7.14229245e-08, -0.99931109, -6.93553162e-08, 1, -6.88964548e-08, 0.99931109, 6.6750637e-08, -0.0371122323)
-              elseif MyLevel == 2375 or MyLevel <= 2399 then
+             elseif Level == 2375 or Level <= 2400 then
                Mon = "Candy Rebel [Lv. 2375]"
                LQuest = 2
                NQuest = "ChocQuest2"
                NameMon = "Candy Rebel"
               CFrameQuest = CFrame.new(149.867218, 24.8196201, -12775.5283, -0.0371122323, -7.14229245e-08, -0.99931109, -6.93553162e-08, 1, -6.88964548e-08, 0.99931109, 6.6750637e-08, -0.0371122323)
-							elseif MyLevel == 2400 or MyLevel <= 2424 then
+            elseif Level == 2400 or Level <= 2424 then
                Mon = "Candy Pirate [Lv. 2400]"
                LQuest = 1
                NQuest = "CandyQuest1"
                NameMon = "Candy Pirate"
-              CFrameQuest = CFrame.new(-1150.92224, 16.1330528, -14446.7168, -0.216739461, -1.54126809e-08, -0.976229489, -1.16627412e-07, 1, 1.0105289e-08, 0.976229489, 1.16045328e-07, -0.216739461)
+              CFrameQuest = CFrame.new(-1231.29004, 91.3840179, -14434.6465, -0.333769143, 4.57979716e-08, 0.942654848, -1.57369762e-08, 1, -5.41560752e-08, -0.942654848, -3.29101617e-08, -0.333769143)
              elseif Level >= 2425 then
                Mon = "Snow Demon [Lv. 2425]"
                LQuest = 2
                NQuest = "CandyQuest1"
                NameMon = "Snow Demon"
-              CFrameQuest = CFrame.new(-1150.92224, 16.1330528, -14446.7168, -0.216739461, -1.54126809e-08, -0.976229489, -1.16627412e-07, 1, 1.0105289e-08, 0.976229489, 1.16045328e-07, -0.216739461)
-            end
+              CFrameQuest = CFrame.new(-940.256104, 63.1305504, -14555.0703, 0.221367463, -5.74154591e-08, -0.975190461, 8.0360671e-08, 1, -4.06343403e-08, 0.975190461, -6.93718434e-08, 0.221367463)
         end
     end
+end
 
     function Hop()
         local PlaceID = game.PlaceId

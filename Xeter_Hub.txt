@@ -1510,93 +1510,93 @@ if game.PlaceId == 2753915549 then
                 NQuest = "HauntedQuest2"
                 NameMon = "Posessed Mummy"
                 CFrameQuest = CFrame.new(-9516.99316, 172.017181, 6078.46533, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-            elseif Level == 2075 or Level <= 2099 then
+            elseif MyLevel == 2075 or MyLevel <= 2099 then
                 Mon = "Peanut Scout [Lv. 2075]"
-                LQuest = 1
-                NQuest = "NutsIslandQuest"
+                LevelQuest = 1
+                NameQuest = "NutsIslandQuest"
                 NameMon = "Peanut Scout"
                 CFrameQuest = CFrame.new(-2104.3908691406, 38.104167938232, -10194.21875, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-            elseif Level == 2100 or Level <= 2124 then
+            elseif MyLevel == 2100 or MyLevel <= 2124 then
                 Mon = "Peanut President [Lv. 2100]"
-                LQuest = 2
-                NQuest = "NutsIslandQuest"
+                LevelQuest = 2
+                NameQuest = "NutsIslandQuest"
                 NameMon = "Peanut President"
                 CFrameQuest = CFrame.new(-2104.3908691406, 38.104167938232, -10194.21875, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-            elseif Level == 2125 or Level <= 2149 then
+            elseif MyLevel == 2125 or MyLevel <= 2149 then
                 Mon = "Ice Cream Chef [Lv. 2125]"
-                LQuest = 1
-                NQuest = "IceCreamIslandQuest"
+                LevelQuest = 1
+                NameQuest = "IceCreamIslandQuest"
                 NameMon = "Ice Cream Chef"
                 CFrameQuest = CFrame.new(-820.64825439453, 65.819526672363, -10965.795898438, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-            elseif Level == 2150 or Level <= 2199 then
+            elseif MyLevel == 2150 or MyLevel <= 2199 then
                 Mon = "Ice Cream Commander [Lv. 2150]"
-                LQuest = 2
-                NQuest = "IceCreamIslandQuest"
+                LevelQuest = 2
+                NameQuest = "IceCreamIslandQuest"
                 NameMon = "Ice Cream Commander"
                 CFrameQuest = CFrame.new(-820.64825439453, 65.819526672363, -10965.795898438, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-            elseif Level == 2200 or Level <= 2224 then
+            elseif MyLevel == 2200 or MyLevel <= 2224 then
                 Mon = "Cookie Crafter [Lv. 2200]"
-                LQuest = 1
-                NQuest = "CakeQuest1"
+                LevelQuest = 1
+                NameQuest = "CakeQuest1"
                 NameMon = "Cookie Crafter"
                 CFrameQuest = CFrame.new(-2021.32007, 37.7982254, -12028.7295, 0.957576931, -8.80302053e-08, 0.288177818, 6.9301187e-08, 1, 7.51931211e-08, -0.288177818, -5.2032135e-08, 0.957576931)
-            elseif Level == 2225 or Level <= 2249 then
+            elseif MyLevel == 2225 or MyLevel <= 2249 then
                 Mon = "Cake Guard [Lv. 2225]"
-                LQuest = 2
-                NQuest = "CakeQuest1"
+                LevelQuest = 2
+                NameQuest = "CakeQuest1"
                 NameMon = "Cake Guard"
                 CFrameQuest = CFrame.new(-2021.32007, 37.7982254, -12028.7295, 0.957576931, -8.80302053e-08, 0.288177818, 6.9301187e-08, 1, 7.51931211e-08, -0.288177818, -5.2032135e-08, 0.957576931)
-            elseif Level == 2250 or Level <= 2274 then
+            elseif MyLevel == 2250 or MyLevel <= 2274 then
                 Mon = "Baking Staff [Lv. 2250]"
-                LQuest = 1
-                NQuest = "CakeQuest2"
+                LevelQuest = 1
+                NameQuest = "CakeQuest2"
                 NameMon = "Baking Staff"
                 CFrameQuest = CFrame.new(-1927.91602, 37.7981339, -12842.5391, -0.96804446, 4.22142143e-08, 0.250778586, 4.74911062e-08, 1, 1.49904711e-08, -0.250778586, 2.64211941e-08, -0.96804446)
-            elseif Level == 2275 or Level <=2299 then
+            elseif MyLevel == 2275 or MyLevel <= 2299 then
                 Mon = "Head Baker [Lv. 2275]"
-                LQuest = 2
-                NQuest = "CakeQuest2"
+                LevelQuest = 2
+                NameQuest = "CakeQuest2"
                 NameMon = "Head Baker"
                 CFrameQuest = CFrame.new(-1927.91602, 37.7981339, -12842.5391, -0.96804446, 4.22142143e-08, 0.250778586, 4.74911062e-08, 1, 1.49904711e-08, -0.250778586, 2.64211941e-08, -0.96804446)
-         elseif Level == 2300 or Level <= 2324 then
-               Mon = "Cocoa Warrior [Lv. 2300]"
-               LQuest = 1
-               NQuest = "ChocQuest1"
-               NameMon = "Cocoa Warrior"
-               CFrameQuest = CFrame.new(231.742981, 25.3354111, -12199.0537, 0.998278677, -5.16006757e-08, 0.0586484075, 4.79685092e-08, 1, 6.33390442e-08, -0.0586484075, -6.04167383e-08, 0.998278677)
-              elseif Level == 2325 or Level <= 2349 then
-               Mon = "Chocolate Bar Battler [Lv. 2325]"
-               LQuest = 2
-               NQuest = "ChocQuest1"
-               NameMon = "Chocolate Bar Battler"
-              CFrameQuest = CFrame.new(231.742981, 25.3354111, -12199.0537, 0.998278677, -5.16006757e-08, 0.0586484075, 4.79685092e-08, 1, 6.33390442e-08, -0.0586484075, -6.04167383e-08, 0.998278677)
-              elseif Level == 2350 or Level <= 2374 then
-               Mon = "Sweet Thief [Lv. 2350]"
-               LQuest = 1
-               NQuest = "ChocQuest2"
-               NameMon = "Sweet Thief"
-              CFrameQuest = CFrame.new(149.867218, 24.8196201, -12775.5283, -0.0371122323, -7.14229245e-08, -0.99931109, -6.93553162e-08, 1, -6.88964548e-08, 0.99931109, 6.6750637e-08, -0.0371122323)
-             elseif Level == 2375 or Level <= 2400 then
-               Mon = "Candy Rebel [Lv. 2375]"
-               LQuest = 2
-               NQuest = "ChocQuest2"
-               NameMon = "Candy Rebel"
-              CFrameQuest = CFrame.new(149.867218, 24.8196201, -12775.5283, -0.0371122323, -7.14229245e-08, -0.99931109, -6.93553162e-08, 1, -6.88964548e-08, 0.99931109, 6.6750637e-08, -0.0371122323)
-            elseif Level == 2400 or Level <= 2424 then
-               Mon = "Candy Pirate [Lv. 2400]"
-               LQuest = 1
-               NQuest = "CandyQuest1"
-               NameMon = "Candy Pirate"
-              CFrameQuest = CFrame.new(-1231.29004, 91.3840179, -14434.6465, -0.333769143, 4.57979716e-08, 0.942654848, -1.57369762e-08, 1, -5.41560752e-08, -0.942654848, -3.29101617e-08, -0.333769143)
-             elseif Level >= 2425 then
-               Mon = "Snow Demon [Lv. 2425]"
-               LQuest = 2
-               NQuest = "CandyQuest1"
-               NameMon = "Snow Demon"
-              CFrameQuest = CFrame.new(-940.256104, 63.1305504, -14555.0703, 0.221367463, -5.74154591e-08, -0.975190461, 8.0360671e-08, 1, -4.06343403e-08, 0.975190461, -6.93718434e-08, 0.221367463)
+			    elseif MyLevel == 2300 or MyLevel <= 2324  then
+                Mon = "Cocoa Warrior [Lv. 2300]"
+                LevelQuest = 1
+                NameQuest = "ChocQuest1"
+                NameMon = "Cocoa Warrior"
+                CFrameQuest = CFrame.new(231.75, 23.9003029, -12200.292, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+            elseif MyLevel == 2324 or MyLevel <= 2349  then
+                Mon = "Chocolate Bar Battler [Lv. 2325]"
+                LevelQuest = 2
+                NameQuest = "ChocQuest1"
+                NameMon = "Chocolate Bar Battler"
+				CFrameQuest = CFrame.new(231.75, 23.9003029, -12200.292, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+				    elseif MyLevel == 2350 or MyLevel <= 2374  then
+                Mon = "Sweet Thief [Lv. 2350]"
+                LevelQuest = 1
+                NameQuest = "ChocQuest2"
+                NameMon = "Sweet Thief"
+                CFrameQuest = CFrame.new(151.198242, 23.8907146, -12774.6172, 0.422592998, 0, 0.906319618, 0, 1, 0, -0.906319618, 0, 0.422592998)
+              elseif MyLevel == 2375 or MyLevel <= 2399 then
+                Mon = "Candy Rebel [Lv. 2375]"
+                LevelQuest = 2
+                NameQuest = "ChocQuest2"
+                NameMon = "Candy Rebel"
+                CFrameQuest = CFrame.new(151.198242, 23.8907146, -12774.6172, 0.422592998, 0, 0.906319618, 0, 1, 0, -0.906319618, 0, 0.422592998)
+              elseif MyLevel == 2400 or MyLevel <= 2424 then
+                Mon = "Candy Pirate [Lv. 2400]"
+                LevelQuest = 1
+                NameQuest = "CandyQuest1"
+                NameMon = "Candy Pirate"
+                CFrameQuest = CFrame.new(-1147.6239013671875, 16.133047103881836, -14444.970703125)
+              elseif MyLevel <= 2450 then
+                Mon = "Snow Demon [Lv. 2425]"
+                LevelQuest = 2
+                NameQuest = "CandyQuest1"
+                NameMon = "Snow Demon"
+                CFrameQuest = CFrame.new(-1147.6239013671875, 16.133047103881836, -14444.970703125)
+			end
         end
     end
-end
 
     function Hop()
         local PlaceID = game.PlaceId
@@ -3932,6 +3932,20 @@ end)
     end)
     
     Main:Seperator("Misc Elite")
+    
+        local Elite_Hunter_Status = Main:Label("Status : N/Q")
+
+        spawn(function()
+            while wait() do
+                pcall(function()
+                    if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo [Lv. 1750]") or game:GetService("ReplicatedStorage"):FindFirstChild("Deandre [Lv. 1750]") or game:GetService("ReplicatedStorage"):FindFirstChild("Urban [Lv. 1750]") or game:GetService("Workspace").Enemies:FindFirstChild("Diablo [Lv. 1750]") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre [Lv. 1750]") or game:GetService("Workspace").Enemies:FindFirstChild("Urban [Lv. 1750]") then
+                        El ite_Hunter_Status:Set("Status : Spawned")	
+                    else
+                        Elite_Hunter_Status:Set("Status : Not Spawned")	
+                    end
+                end)
+            end
+        end)
     
     local EliteProgress = Main:Label("")
     
@@ -6815,6 +6829,28 @@ end)
             end
         end
     end)
+    
+    Misc:Toggle("Show Chat disabled", _G.chat, function(value)
+    _G.chat = value
+    if _G.chat == true then
+local StarterGui = game:GetService('StarterGui')
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)    
+elseif _G.chat == false then
+local StarterGui = game:GetService('StarterGui')
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true)    
+end
+  end)
+
+  Misc:Toggle("Show leaderboard disabled", _G.leaderboard, function(a)
+    _G.leaderboard = a
+    if _G.leaderboard == true then
+local StarterGui = game:GetService('StarterGui')
+game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)   
+elseif _G.leaderboard == false then
+local StarterGui = game:GetService('StarterGui')
+game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)   
+end
+  end)
     
     Misc:Toggle("Infinite Obversation Range",getgenv().InfiniteObRange,function(value)
         getgenv().InfiniteObRange = value

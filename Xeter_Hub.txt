@@ -1500,14 +1500,14 @@ if game.PlaceId == 2753915549 then
                 CFrameQuest = CFrame.new(-9479.2168, 141.215088, 5566.09277, 0, 0, 1, 0, 1, -0, -1, 0, 0)
             elseif Level == 2025 or Level <= 2049 then
                 Mon = "Demonic Soul [Lv. 2025]"
-                LQuest = 1
-                NQuest = "HauntedQuest2"
+                LevelQuest = 1
+                NameQuest = "HauntedQuest2"
                 NameMon = "Demonic Soul"
                 CFrameQuest = CFrame.new(-9516.99316, 172.017181, 6078.46533, 0, 0, -1, 0, 1, 0, 1, 0, 0) 
             elseif Level == 2050 or Level <= 2074 then
                 Mon = "Posessed Mummy [Lv. 2050]"
-                LQuest = 2
-                NQuest = "HauntedQuest2"
+                LevelQuest = 2
+                NameQuest = "HauntedQuest2"
                 NameMon = "Posessed Mummy"
                 CFrameQuest = CFrame.new(-9516.99316, 172.017181, 6078.46533, 0, 0, -1, 0, 1, 0, 1, 0, 0)
             elseif MyLevel == 2075 or MyLevel <= 2099 then
